@@ -4,23 +4,83 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Últimas Notícias de Contagem</title>
+
   <style>
+    /* ----------- ESTILOS GERAIS ----------- */
+
     body {
       font-family: Arial, sans-serif;
       line-height: 1.4;
       margin: 20px;
       background-color: #f7f7f7;
       color: #222;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     header {
-      text-align: left;
       margin-bottom: 20px;
     }
 
-    h1 { font-size: 28px; margin-bottom: 20px; }
+    h1 { 
+      font-size: 28px; 
+      margin-bottom: 20px; 
+      transition: transform 0.3s; 
+    }
+
+    h1:hover {
+      transform: scale(1.05);
+      color: #444;
+    }
+
+    /* ----------- MENU DE NAVEGAÇÃO ----------- */
+
+    nav {
+      background: #222;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    /* Estados obrigatórios */
+    nav li a:hover {
+      background: #444;
+      transform: scale(1.1);
+    }
+
+    nav li a:active {
+      background: #777;
+    }
+
+    nav li a:visited {
+      color: #c7c7ff;
+    }
+
+    /* ----------- NOTÍCIAS ----------- */
 
     .event-list { list-style: none; padding: 0; }
+
     .event-item {
       background: #fff;
       border: 1px solid #ddd;
@@ -29,6 +89,12 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .event-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .event-item img {
@@ -39,56 +105,100 @@
       flex-shrink: 0;
     }
 
-    .event-content h2 { font-size: 18px; margin: 0 0 6px 0; }
+    .event-content h2 { 
+      font-size: 18px; 
+      margin: 0 0 6px 0; 
+      transition: color 0.3s;
+    }
+
+    .event-content h2:hover {
+      color: #555;
+    }
+
     .event-content p { margin: 0 0 6px 0; color: #333; }
+
     .event-meta { font-size: 13px; color: #777; }
 
-    footer { margin-top: 24px; font-size: 13px; color:#666; }
-
+    /* Responsivo  */
     @media (max-width: 520px) {
       .event-item { flex-direction: column; }
       .event-item img { width: 100%; height: 180px; }
     }
+
+    footer { 
+      margin-top: 24px; 
+      font-size: 13px; 
+      color:#666; 
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- MENU -->
+  <nav>
+    <ul>
+      <li><a href="#">Início</a></li>
+      <li><a href="#">Notícias</a></li>
+      <li><a href="#">Eventos</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </nav>
+
   <header>
     <h1>Últimas Notícias de Contagem</h1>
   </header>
 
   <main>
     <ul class="event-list">
+
       <li class="event-item">
-        <img src="https://barramansa.rj.gov.br/wp-content/uploads/2021/10/22-10-2021-Feira-de-Artesanato-Praca-da-Matriz-Chico-de-assis-20-scaled-e1634931578716.jpg" alt="Foto da notícia 1 em Contagem">
+        <img src="https://barramansa.rj.gov.br/wp-content/uploads/2021/10/22-10-2021-Feira-de-Artesanato-Praca-da-Matriz-Chico-de-assis-20-scaled-e1634931578716.jpg">
         <div class="event-content">
           <h2>Feira de Artesanato na Praça</h2>
-          <p>Feira com artesãos locais, comidas típicas e música ao vivo. Ideal para famílias e quem gosta de produtos feitos à mão.</p>
+          <p>Feira com artesãos locais, comidas típicas e música ao vivo.</p>
           <p class="event-meta">15 de novembro de 2025 — Praça do Eldorado</p>
+
+          <!-- LINK EXTERNO COM ESTADO DE LINK -->
+          <a href="https://google.com" target="_blank">Saiba mais</a>
         </div>
       </li>
 
       <li class="event-item">
-        <img src="https://tse2.mm.bing.net/th/id/OIP.H56DV-NE6OSs5uun2i158QHaE8?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Foto da notícia 2 em Contagem">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.H56DV-NE6OSs5uun2i158QHaE8">
         <div class="event-content">
           <h2>Corrida Noturna da Cidade</h2>
-          <p>Corrida de 5 km aberta ao público, com pontos de hidratação e premiação para os primeiros colocados.</p>
-          <p class="event-meta">22 de novembro de 2025 — Avenida João César de Oliveira</p>
+          <p>Corrida de 5 km aberta ao público, com hidratação e premiação.</p>
+          <p class="event-meta">22 de novembro de 2025 — Av. João César de Oliveira</p>
+
+          <!-- VIDEO (OBRIGATÓRIO PELO PROF) -->
+          <iframe width="300" height="170"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Vídeo da Notícia"
+            allowfullscreen>
+          </iframe>
         </div>
       </li>
 
       <li class="event-item">
-        <img src="https://www.jornalofolha.com.br/wp-content/uploads/2024/05/casa-de-cultura-div-1-1024x611.jpg" alt="Foto da notícia 3 em Contagem">
+        <img src="https://www.jornalofolha.com.br/wp-content/uploads/2024/05/casa-de-cultura-div-1-1024x611.jpg">
         <div class="event-content">
           <h2>Exposição de História Local</h2>
-          <p>Exposição sobre a história de Contagem com fotos antigas, objetos e relatos de moradores.</p>
-          <p class="event-meta">01 a 10 de dezembro de 2025 — Museu Municipal de Contagem</p>
+          <p>Fotos antigas, objetos e relatos de moradores da cidade.</p>
+          <p class="event-meta">01 a 10 de dezembro de 2025 — Museu Municipal</p>
+
+          <!-- LINK VISITADO / NÃO VISITADO -->
+          <a href="https://contagem.mg.gov.br" target="_blank">Ver detalhes</a>
         </div>
       </li>
+
     </ul>
   </main>
 
   <footer>
-    <p> .</p>
+    <p>Site criado para atividade escolar de Programação Web.</p>
   </footer>
+
 </body>
 </html>
